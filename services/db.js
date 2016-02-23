@@ -1,6 +1,5 @@
 var mongo = require('mongodb');
-var url = (process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost:27017/') + 'stumblr';
-
+var url = (process.env.HEROKU_MONGODB_DB_URL || 'mongodb://localhost:27017/warroom';
 
 module.exports = {
   connect: function() {

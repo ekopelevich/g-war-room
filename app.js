@@ -1,14 +1,16 @@
+if(process.env.NODE_ENV !== 'production'){
+  require('dotenv').load();
+}
 var express = require('express');
-var socket = require('socket.io');
 var http = require('http');
 var path = require('path');
 var unirest = require('unirest');
+var server = http.Server(app);
+var io = require('socket.io')(server);
 var warroom = require("./warroom-client")
 var db = require('mongoDB')('localhost/...')
 
 var app = express();
-var server = http.Server(app);
-var io = socket(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -16,30 +18,30 @@ app.get('/api', function(req, res){
   unirest.get('http://galvanize-warroom-status.herokuapp.com/')
   .end(function (response) {
     res.json(response.body);
-    // console.log(response.body);
   });
-  // warroom();
 });
 
-// io.on('connection', function (socket) {
-//   setInterval(function () {
-//     unirest.get('https://still-journey-81768.herokuapp.com/')
-//       .end(function (data) {
-//         db.get('houses').find().then(function (houses) {
-//           var average = findAverage(houses);
-//           socket.emit("bid", {
-//             body: data.body,
-//             average: average,
-//             time: new Date()
-//           })
-//         })
-//       })
-//   }, 3000)
-// })
-
-// function warroom(error, data){
-//   console.log(data);
-// }
+io.on('connection', function(socket){
+  console.log('this is warroom', warroom);
+  warroom()
+  .end(function (data) {
+    var total = 0;
+    var lastTen = [];
+    var average = function(resTime){
+      if (lastTen.length < 5){
+        lastTen.push(resTime);
+        for (var i = 0; i < lastTen.length; i++) {
+          total += i;
+          average = total/5;
+        }
+      }
+      return average;
+    };
+    io.emit('resTime', resTime);
+    console.log('resTime: ' + resTime);
+    console.log('average: ' + average);
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

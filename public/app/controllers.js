@@ -7,43 +7,25 @@ ServersController.$inject = ['$scope', 'ServersService'];
 
 function ServersController($scope, ServersService) {
   console.log("Hello from Servers Controller");
-  // $scope.servers = [
-  //   {
-  //     "name": "WOPR",
-  //     "responseTime": 0.1,
-  //     "id": 1776,
-  //     "os": "Red Hat",
-  //     "memory": "8GB",
-  //     "cpu": "Intel i7",
-  //     "temp": "82C"
-  //   },
-  //   {
-  //     "name": "HAL",
-  //     "responseTime": 1.01,
-  //     "id": 2010,
-  //     "os": "Dave OS",
-  //     "memory": "128KB",
-  //     "cpu": "Comodore 64",
-  //     "temp": "10C"
-  //   },
-  //   {
-  //     "name": "R2D2",
-  //     "responseTime": 1.3191565923795197,
-  //     "id": 1977,
-  //     "os": "Mission Control OS",
-  //     "memory": "2EB",
-  //     "cpu": "Force t5",
-  //     "temp": "84C"
-  //   }
-  // ];
 
   $scope.servers = [];
 
   ServersService.getServers()
-    .then(function(servers){
-      $scope.servers = servers;
-      console.log('here' + $scope.servers);
-    });
+  .then(function(servers){
+    $scope.servers = servers;
+  });
+
+  $scope.getServerStatus = function(resTime){
+    var warning = 50;
+    var critical = 500;
+    if(resTime <= warning) {
+      status = 'good'
+    } else if(resTime > critical) {
+      status = 'critical';
+    } else {
+      status = 'warning';
+    } return status;
+  }
 }
 
 DetailController.$inject = ['$scope', 'ServersService', '$stateParams', 'DetailService']

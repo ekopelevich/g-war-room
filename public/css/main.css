@@ -64,8 +64,20 @@ main {
 .server-status {
   width: 220px;
   height: 80px;
-  background-color: #36b80f;
-  align-self: center; }
+  color: #fff;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.good {
+  background-color: #04d400; }
+
+.warning {
+  background-color: #ffa800; }
+
+.critical {
+  background-color: #cf0000; }
 
 .settings {
   margin: 20px; }
@@ -98,3 +110,13 @@ footer {
 
 .ng-leave {
   animation: fadeOutRight 1s; }
+
+@media (max-width: 784px) {
+  .server-status {
+    width: 120px; } }
+
+@media (max-width: 520px) {
+  .servers {
+    flex-direction: column; }
+  .server-status {
+    width: 220px; } }
