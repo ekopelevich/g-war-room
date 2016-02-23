@@ -1,12 +1,11 @@
-<h2 class="server-detail">{{ server.name }}</h2>
+<!-- <h1>Sanity Check</h1> -->
 <div class="servers">
-  <div class="server" ng-repeat="server in servers">
+  <div class="server-container" ng-repeat="server in servers">
+    <h3 class="server-detail">{{ server.name }}</h3>
+    <a ui-sref="details({serverId: id})">View Server Details</a>
+    <p>Average Response Time: {{ server.responseTime }}</p>
     <div class="server-status">
-      <p>Status: {{ server.status }}</p>
+      <p>Status: {{ server.responseTime }}</p>
     </div>
-    <p>Server ID: {{ server.id }}</p>
-    <p>Response Time: {{ server.responseTime }}</p>
-    <p>OS: {{ server.os }}</p>
-    <p>Memory: {{ server.memory }}</p>
   </div>
 </div>

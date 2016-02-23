@@ -1,8 +1,9 @@
-<h2>{{ server.name }}</h2>
-<div "server-detail">
+<div class="server">
   <p>Server ID: {{ server.id }}</p>
-  <p>Response Time: {{ server.responseTime }}</p>
+  <p>Average Response Time: {{ server.responseTime }}</p>
   <p>OS: {{ server.os }}</p>
   <p>Memory: {{ server.memory }}</p>
-  <p>Status: {{ server.status }}</p>
+  <div class="server-status">
+    <p>Status: {{ server.status }}</p>
+  </div>
 </div>

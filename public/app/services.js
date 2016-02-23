@@ -3,34 +3,42 @@ angular.module('warRoom')
   .factory('DetailService', DetailService)
   .factory('SettingsService', SettingsService);
 
+ServersService.$inject = ['$http']
 
-function ServersService() {
+function ServersService($http) {
   console.log("Hello from Servers Service")
+  return {
+    getServers: function() {
+      return $http.get('/api')
+      .then(function(response){
+        var data = response.data
+        var servers = [];
+        // console.log(data);
+        for (var i = 0; i < data.length; i++) {
+          servers.push(data[i]);
+        }
+        console.log(servers);
+        return servers;
+      });
+    },
+    getServer: function (id) {
+      return this.getServer()
+      .then(function(servers){
+        for (var i = 0; i < servers.length; i++) {
+          if (i == id) {
+            console.log('server', servers[i]);
+          }
+        }
+      });
+    }
+  }
 }
 
-DetailService.$inject = ['$stateParams']
+DetailService.$inject = ['$stateParams', 'ServersService']
 
 function DetailService ($stateParams) {
-  // var socket = io()
-  // var callbacks = []
-  // console.log($stateParams.id);
-  // socket.on('detail', function (data) {
-  //   callbacks.forEach(function (callback) {
-  //     var amount, average;
-  //     data.body.forEach(function (server, index) {
-  //       if (house.id == $stateParams.id) {
-  //         amount = house.currentBid;
-  //         average = data.average[house.id].average
-  //       }
-  //     })
-  //     callback({amount: amount, time: data.time, average: average})
-  //   })
-  // })
-  // return {
-  //   on: function (callback) {
-  //     callbacks.push(callback)
-  //   }
-  // }
+  console.log('Hello from Detail Service');
+
 }
 
 SettingsService.$inject = ['$stateParams']

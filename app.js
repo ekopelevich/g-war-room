@@ -12,13 +12,34 @@ var io = socket(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/servers', function(){
-  warroom();
+app.get('/api', function(req, res){
+  unirest.get('http://galvanize-warroom-status.herokuapp.com/')
+  .end(function (response) {
+    res.json(response.body);
+    // console.log(response.body);
+  });
+  // warroom();
 });
 
-function warroom(error, data){
-  console.log(data);
-}
+// io.on('connection', function (socket) {
+//   setInterval(function () {
+//     unirest.get('https://still-journey-81768.herokuapp.com/')
+//       .end(function (data) {
+//         db.get('houses').find().then(function (houses) {
+//           var average = findAverage(houses);
+//           socket.emit("bid", {
+//             body: data.body,
+//             average: average,
+//             time: new Date()
+//           })
+//         })
+//       })
+//   }, 3000)
+// })
+
+// function warroom(error, data){
+//   console.log(data);
+// }
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
