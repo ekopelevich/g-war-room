@@ -1,17 +1,17 @@
 angular.module('warRoom')
-  .factory('SplashService', SplashService)
+  // .factory('SplashService', SplashService)
   .factory('ServersService', ServersService)
   .factory('DetailService', DetailService);
 
 // SplashService.$inject = ['$http']
 
-function SplashService() {
-  console.log("Hello from Splash Service")
-}
+// function SplashService() {
+//   console.log("Hello from Splash Service")
+// }
 
-ServersService.$inject = ['$http']
+// ServersService.$inject = ['$http']
 
-function ServersService($http) {
+function ServersService() {
   console.log("Hello from Servers Service")
 }
 

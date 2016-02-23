@@ -11,10 +11,13 @@ html, body {
   height: 100%;
   margin-bottom: -60px; }
 
-nav {
+header {
   height: 60px;
   color: #fff;
   background-color: #222; }
+  header ul {
+    display: flex;
+    align-content: flex-end; }
 
 main {
   height: 100%;

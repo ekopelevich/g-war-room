@@ -1,17 +1,17 @@
 angular.module('warRoom')
-  .controller('SplashController', SplashController)
+  // .controller('SplashController', SplashController)
   .controller('ServersController', ServersController)
   .controller('DetailController', DetailController);
 
-SplashController.$inject = ['$scope', 'SplashService'];
-
-function SplashController($scope, SplashService) {
-  console.log("Hello from Splash Controller");
-  // SplashService.getHomes()
-  //   .then(function(homes){
-  //     $scope.homes = homes;
-  //   });
-}
+// SplashController.$inject = ['$scope', 'SplashService'];
+//
+// function SplashController($scope, SplashService) {
+//   console.log("Hello from Splash Controller");
+//   // SplashService.getHomes()
+//   //   .then(function(homes){
+//   //     $scope.homes = homes;
+//   //   });
+// }
 
 ServersController.$inject = ['$scope', 'ServersService'];
 

@@ -6,7 +6,7 @@ angular.module('warRoom', ['ui.router', 'ngAnimate'])
 
     $stateProvider.state('splash', {
       templateUrl: 'components/main/splash.html',
-      controller: 'SplashController',
+      // controller: 'SplashController',
       url: '/'
     }).state('servers', {
       views: {

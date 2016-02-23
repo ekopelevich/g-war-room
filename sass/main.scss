@@ -16,6 +16,11 @@ header {
   height: 60px;
   color: #fff;
   background-color: #222;
+
+  ul {
+    display: flex;
+    align-content: flex-end;
+  }
 }
 
 main {
