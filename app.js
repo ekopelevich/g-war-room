@@ -8,8 +8,6 @@ var unirest = require('unirest');
 var server = http.Server(app);
 var io = require('socket.io')(server);
 var warroom = require("./warroom-client")
-// var db = require('mongoDB')('localhost/...')
-
 var app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -23,7 +21,9 @@ app.get('/api', function(req, res){
 
 io.on('connection', function(socket){
   console.log('this is warroom', warroom);
-  warroom()
+  warroom(function (error, data) {
+      console.log(data) // OR insert this data...
+  })
   .end(function (data) {
     var total = 0;
     var lastTen = [];
@@ -38,8 +38,8 @@ io.on('connection', function(socket){
       return average;
     };
     io.emit('resTime', resTime);
-    console.log('resTime: ' + resTime);
-    console.log('average: ' + average);
+    console.log('resTime: ', resTime);
+    console.log('average: ', average());
   });
 });
 
