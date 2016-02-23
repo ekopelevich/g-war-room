@@ -15,9 +15,18 @@ header {
   height: 60px;
   color: #fff;
   background-color: #222; }
-  header ul {
-    display: flex;
-    align-content: flex-end; }
+  header nav {
+    padding-top: 15px; }
+  header .nav-left {
+    float: left; }
+  header .nav-right {
+    float: right; }
+  header li {
+    display: inline-block;
+    float: left;
+    margin-right: 20px; }
+  header a {
+    color: #fff; }
 
 main {
   height: 100%;
@@ -39,8 +48,12 @@ main {
     color: #fff;
     border: 1px solid #fff; }
 
-ul {
-  list-style: none; }
+.servers {
+  display: flex;
+  flex-direction: row; }
+
+.server {
+  flex: 1; }
 
 footer {
   display: flex;

@@ -1,25 +1,15 @@
 angular.module('warRoom')
-  // .controller('SplashController', SplashController)
   .controller('ServersController', ServersController)
-  .controller('DetailController', DetailController);
-
-// SplashController.$inject = ['$scope', 'SplashService'];
-//
-// function SplashController($scope, SplashService) {
-//   console.log("Hello from Splash Controller");
-//   // SplashService.getHomes()
-//   //   .then(function(homes){
-//   //     $scope.homes = homes;
-//   //   });
-// }
+  .controller('DetailController', DetailController)
+  .controller('DetailController', SettingsController);
 
 ServersController.$inject = ['$scope', 'ServersService'];
 
 function ServersController($scope, SplashService) {
   console.log("Hello from Servers Controller");
-  // SplashService.getHomes()
-  //   .then(function(homes){
-  //     $scope.homes = homes;
+  // SplashService.getServers()
+  //   .then(function(servers){
+  //     $scope.servers = servers;
   //   });
 }
 
@@ -38,4 +28,10 @@ function DetailController($scope, ServersService, $stateParams, DetailService) {
   //   console.log($scope.bids)
   //   $scope.$apply()
   // })
+}
+
+SettingsController.$inject = ['$scope', 'SettingsService'];
+
+function SeettingsController($scope) {
+  console.log("Hello from Settings Controller");
 }

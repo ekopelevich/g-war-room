@@ -17,9 +17,26 @@ header {
   color: #fff;
   background-color: #222;
 
-  ul {
-    display: flex;
-    align-content: flex-end;
+  nav {
+    padding-top: 15px;
+  }
+
+  .nav-left {
+    float: left;
+  }
+
+  .nav-right {
+    float: right;
+  }
+
+  li {
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+  }
+
+  a {
+    color: #fff;
   }
 }
 
@@ -47,8 +64,13 @@ main {
   }
 }
 
-ul {
-  list-style: none;
+.servers {
+  display: flex;
+  flex-direction: row;
+}
+
+.server {
+  flex: 1;
 }
 
 .server-status {

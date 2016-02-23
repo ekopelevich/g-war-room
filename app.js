@@ -3,14 +3,22 @@ var socket = require('socket.io');
 var http = require('http');
 var path = require('path');
 var unirest = require('unirest');
-
-// var db = require('monk')('localhost/realState')
+var warroom = require("./warroom-client")
+var db = require('mongoDB')('localhost/...')
 
 var app = express();
 var server = http.Server(app);
 var io = socket(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/servers', function(){
+  warroom();
+});
+
+function warroom(error, data){
+  console.log(data);
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

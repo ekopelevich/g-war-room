@@ -1,0 +1,12 @@
+<h2 class="server-detail">{{ server.name }}</h2>
+<div class="servers">
+  <div class="server" ng-repeat="server in servers">
+    <div class="server-status">
+      <p>Status: {{ server.status }}</p>
+    </div>
+    <p>Server ID: {{ server.id }}</p>
+    <p>Response Time: {{ server.responseTime }}</p>
+    <p>OS: {{ server.os }}</p>
+    <p>Memory: {{ server.memory }}</p>
+  </div>
+</div>

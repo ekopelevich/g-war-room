@@ -1,15 +1,8 @@
 angular.module('warRoom')
-  // .factory('SplashService', SplashService)
   .factory('ServersService', ServersService)
-  .factory('DetailService', DetailService);
+  .factory('DetailService', DetailService)
+  .factory('SettingsService', SettingsService);
 
-// SplashService.$inject = ['$http']
-
-// function SplashService() {
-//   console.log("Hello from Splash Service")
-// }
-
-// ServersService.$inject = ['$http']
 
 function ServersService() {
   console.log("Hello from Servers Service")
@@ -38,4 +31,10 @@ function DetailService ($stateParams) {
   //     callbacks.push(callback)
   //   }
   // }
+}
+
+SettingsService.$inject = ['$stateParams']
+
+function SettingsService() {
+  console.log("Hello from Settings Service")
 }
