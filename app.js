@@ -8,7 +8,7 @@ var unirest = require('unirest');
 var server = http.Server(app);
 var io = require('socket.io')(server);
 var warroom = require("./warroom-client")
-var db = require('mongoDB')('localhost/...')
+// var db = require('mongoDB')('localhost/...')
 
 var app = express();
 
