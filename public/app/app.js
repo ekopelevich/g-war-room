@@ -5,16 +5,43 @@ angular.module('warRoom', ['ui.router', 'ngAnimate'])
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('splash', {
-      templateUrl: 'partials/splash.html',
+      templateUrl: 'components/main/splash.html',
       controller: 'SplashController',
-      url: '/splash'
+      url: '/'
     }).state('servers', {
-      templateUrl: 'partials/servers.html',
-      controller: 'ServersController',
-      url: '/servers'
+      views: {
+        header: {
+          templateUrl: 'components/header/header.html',
+          controller: 'HeaderController',
+          url: '/servers'
+        },
+        main: {
+          templateUrl: 'components/main/servers.html',
+          controller: 'ServersController',
+          url: '/servers'
+        }
+      }
     }).state('detail', {
-      templateUrl: 'partials/detail.html',
-      controller: 'DetailController',
-      url: '/servers/:id'
+      header: {
+        templateUrl: 'components/header/header.html',
+        controller: 'HeaderController',
+        url: '/servers/:id'
+      },
+      main: {
+        templateUrl: 'components/main/detail.html',
+        controller: 'DetailController',
+        url: '/servers/:id'
+      }
+    }).state('settings', {
+      header: {
+        templateUrl: 'components/header/header.html',
+        controller: 'HeaderController',
+        url: '/settings'
+      },
+      main: {
+        templateUrl: 'components/main/settings.html',
+        controller: 'SettingsController',
+        url: '/settings'
+      }
     })
   });

@@ -1,12 +1,14 @@
-var Express = require("express")
-var Socket = require("socket.io")
-var http = require("http")
-var unirest = require('unirest')
-var db = require('monk')('localhost/realState')
+var express = require('express');
+var socket = require('socket.io');
+var http = require('http');
+var path = require('path');
+var unirest = require('unirest');
 
-var app = Express()
-var server = http.Server(app)
-var io = Socket(server)
+// var db = require('monk')('localhost/realState')
+
+var app = express();
+var server = http.Server(app);
+var io = socket(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

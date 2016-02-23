@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  background: url("../assets/irongrip.png") repeat; }
+
+.container {
+  height: 100%;
+  margin-bottom: -60px; }
+
+nav {
+  height: 60px;
+  color: #fff;
+  background-color: #222; }
+
+main {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  color: #fff; }
+
+.splash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../assets/war-room.jpg");
+  background-position: center;
+  height: 100%;
+  width: 100%; }
+  .splash .btn-enter {
+    font-size: 2em;
+    font-family: 'Black Ops One', cursive;
+    color: #fff;
+    border: 1px solid #fff; }
+
+ul {
+  list-style: none; }
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  color: #fff;
+  background-color: #222; }
+
+.ng-enter {
+  animation: fadeInLeft 1s; }
+
+.ng-leave {
+  animation: fadeOutRight 1s; }
