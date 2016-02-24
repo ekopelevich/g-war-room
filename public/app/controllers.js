@@ -12,8 +12,10 @@ function ServersController($scope, ServersService, StatusService, $stateParams) 
   ServersService.getServers()
   .then(function(servers){
     $scope.servers = servers;
-    // $scope.resTime = StatusService.on();
   });
+
+  StatusService.getStatus($stateParams)
+
 
   $scope.getServerStatus = function(resTime){
     var warning = 50;
