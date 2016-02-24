@@ -14,6 +14,9 @@ function ServersController($scope, ServersService, StatusService, $stateParams) 
     $scope.servers = servers;
   });
 
+  StatusService.getStatus($stateParams)
+
+
   $scope.getServerStatus = function(resTime){
     var warning = 50;
     var critical = 500;

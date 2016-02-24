@@ -35,19 +35,22 @@ function ServersService($http) {
 StatusService.$inject = ['$stateParams'];
 
 function StatusService ($stateParams) {
-  var socket = io()
-  var callbacks = []
-  socket.on('resTime', function (data) {
-    var serverData = data.data;
-    for (var i = 0; i < serverData.length; i++) {
-      resTime = serverData[i].responseTime;
-      console.log(resTime);
-    }
-    callbacks.forEach(function (callback) {
-      callback(data);
-    })
-  });
+
   return {
+    getStatus: function(){
+      var socket = io()
+      var callbacks = []
+      socket.on('resTime', function (data) {
+        var serverData = data.data;
+        for (var i = 0; i < serverData.length; i++) {
+          resTime = serverData[i].responseTime;
+          console.log(resTime);
+        };
+        callbacks.forEach(function (callback) {
+          callback(data);
+        });
+      });
+    },
     on: function (callback) {
       callbacks.push(callback)
     }

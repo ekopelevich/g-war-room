@@ -1,11 +1,11 @@
 <div class="servers">
   <div class="server-container" ng-repeat="server in servers">
-    <a href="/:id">
+    <a ui-sref="detail({id: server.id})">
       <h3>{{ server.name }}</h3>
     </a>
     <p>Average Response Time: {{ server.responseTime * 1000 | date : 'sss' }}ms</p>
-    <div class="server-status" ng-class="getServerStatus(server.responseTime * 1000)">
-      <p>Response Time: {{ server.responseTime * 1000 | date : 'sss' }}ms</p>
+    <div class="server-status" ng-class="getServerStatus(status.responseTime * 1000)">
+      <p>Response Time: {{ status.responseTime * 1000 | date : 'sss' }}ms</p>
     </div>
   </div>
 </div>
