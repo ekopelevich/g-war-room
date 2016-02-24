@@ -20,7 +20,7 @@ function ServersService($http) {
       });
     },
     getServer: function (id) {
-      return this.getServer()
+      return this.getServers()
       .then(function(servers){
         for (var i = 0; i < servers.length; i++) {
           if (i == id) {
