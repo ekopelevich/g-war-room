@@ -4,8 +4,10 @@
       <h3>{{ server.name }}</h3>
     </a>
     <p>Average Response Time: {{ server.responseTime * 1000 | date : 'sss' }}ms</p>
-    <div class="server-status" ng-class="getServerStatus(status.responseTime * 1000)">
-      <p>Response Time: {{ status.responseTime * 1000 | date : 'sss' }}ms</p>
-    </div>
+    <a ui-sref="detail({id: server.id})">
+      <div class="server-status" ng-class="getServerStatus(status.responseTime * 1000)">
+        <p>Response Time: {{ status.responseTime * 1000 | date : 'sss' }}ms</p>
+      </div>
+    </a>
   </div>
 </div>

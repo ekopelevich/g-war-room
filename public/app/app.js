@@ -1,6 +1,5 @@
 angular.module('warRoom', ['ui.router', 'ngAnimate'])
   .config(function($stateProvider, $urlRouterProvider){
-    console.log("Hello from the War Room")
 
     $urlRouterProvider.otherwise('/');
 
@@ -13,7 +12,7 @@ angular.module('warRoom', ['ui.router', 'ngAnimate'])
       url: '/servers'
     }).state('detail', {
       templateUrl: 'components/detail.html',
-      controller: 'ServersController',
+      controller: 'DetailController',
       url: '/servers/:id'
     }).state('settings', {
       templateUrl: 'components/settings.html',

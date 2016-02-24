@@ -1,12 +1,11 @@
 angular.module('warRoom')
   .controller('ServersController', ServersController)
+  .controller('DetailController', DetailController)
   .controller('SettingsController', SettingsController);
 
 ServersController.$inject = ['$scope', 'ServersService', 'StatusService', '$stateParams'];
 
 function ServersController($scope, ServersService, StatusService, $stateParams) {
-  console.log("Hello from Servers Controller");
-  console.log($stateParams);
   $scope.servers = [];
 
   ServersService.getServers()
@@ -14,20 +13,17 @@ function ServersController($scope, ServersService, StatusService, $stateParams) 
     $scope.servers = servers;
   });
 
-  StatusService.getStatus($stateParams)
+  console.log(StatusService.getServerStatus());
+  $scope.status = StatusService.getServerStatus();
+}
 
+SettingsController.$inject = ['$scope', 'ServersService', 'StatusService', '$stateParams']
 
-  $scope.getServerStatus = function(resTime){
-    var warning = 50;
-    var critical = 500;
-    if(resTime <= warning) {
-      status = 'good'
-    } else if(resTime > critical) {
-      status = 'critical';
-    } else {
-      status = 'warning';
-    } return status;
-  }
+function DetailController($scope, ServersService, StatusService, $stateParams){
+  ServersService.getServer($stateParams.id)
+  .then(function(server){
+    $scope.server = server
+  });
 }
 
 SettingsController.$inject = ['$scope', 'SettingsService', '$stateParams']

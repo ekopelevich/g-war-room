@@ -1,13 +1,13 @@
 <div class="servers">
   <div class="server-container">
-    <h3>{{ servers[0].name }}</h3>
-    <p>Average Response Time: {{ servers[0].responseTime * 1000 | date : 'sss' }}ms</p>
-    <p>Server ID: {{ servers[0].id }}</p>
-    <p>Average Response Time: {{ servers[0].responseTime }}</p>
-    <p>OS: {{ servers[0].os }}</p>
-    <p>Memory: {{ servers[0].memory }}</p>
+    <h3>{{ server.name }}</h3>
+    <p>Average Response Time: {{ server.responseTime * 1000 | date : 'sss' }}ms</p>
+    <p>Server ID: {{ server.id }}</p>
+    <p>Average Response Time: {{ server.responseTime }}</p>
+    <p>OS: {{ server.os }}</p>
+    <p>Memory: {{ server.memory }}</p>
     <div class="server-status" ng-class="getServerStatus(server.responseTime * 1000)">
-      <p>Response Time: {{ servers[0].responseTime * 1000 | date : 'sss' }}ms</p>
+      <p>Response Time: {{ server.responseTime * 1000 | date : 'sss' }}ms</p>
     </div>
   </div>
 </div>

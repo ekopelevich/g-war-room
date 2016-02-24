@@ -59,12 +59,14 @@ main {
   padding: 20px;
   text-align: center;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: center; }
 
 .server-status {
   width: 220px;
   height: 80px;
   color: #fff;
+  background-color: #183ede;
   align-self: center;
   display: flex;
   flex-direction: column;
