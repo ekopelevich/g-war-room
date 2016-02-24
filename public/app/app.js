@@ -13,7 +13,7 @@ angular.module('warRoom', ['ui.router', 'ngAnimate'])
       url: '/servers'
     }).state('detail', {
       templateUrl: 'components/detail.html',
-      controller: 'DetailController',
+      controller: 'ServersController',
       url: '/servers/:id'
     }).state('settings', {
       templateUrl: 'components/settings.html',

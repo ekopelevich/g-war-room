@@ -1,6 +1,5 @@
 angular.module('warRoom')
   .factory('ServersService', ServersService)
-  .factory('DetailService', DetailService)
   .factory('StatusService', StatusService)
   .factory('SettingsService', SettingsService);
 
@@ -33,30 +32,21 @@ function ServersService($http) {
   }
 }
 
-DetailService.$inject = ['$stateParams']
-
-function DetailService ($stateParams) {
-  console.log('Hello from Detail Service');
-}
-
-StatusService.$inject = ['$stateParams']
+StatusService.$inject = ['$stateParams'];
 
 function StatusService ($stateParams) {
   var socket = io()
   var callbacks = []
-  console.log($stateParams.id);
-  socket.on('status', function (data) {
+  socket.on('resTime', function (data) {
+    var serverData = data.data;
+    for (var i = 0; i < serverData.length; i++) {
+      resTime = serverData[i].responseTime;
+      console.log(resTime);
+    }
     callbacks.forEach(function (callback) {
-      var resTime, average;
-      data.body.forEach(function (server, index) {
-        if (server.id == $stateParams.id) {
-          resTime = server.responseTime;
-          average = data.average[server.id].average
-        }
-      })
-      callback({resTime: resTime, time: data.time, average: average})
+      callback(data);
     })
-  })
+  });
   return {
     on: function (callback) {
       callbacks.push(callback)
@@ -66,6 +56,21 @@ function StatusService ($stateParams) {
 
 SettingsService.$inject = ['$stateParams']
 
-function SettingsService() {
+function SettingsService($stateParams) {
   console.log("Hello from Settings Service")
 }
+
+function average(resTime){
+  var resTime = data.responseTime;
+  var total = 0;
+  var lastFive = [];
+  console.log(resTime);
+  if (lastFive.length < 5){
+    lastFive.push(resTime);
+    for (var i = 0; i < lastFive.length; i++) {
+      total += i;
+      average = total/5;
+    }
+  }
+  return average;
+};

@@ -5,10 +5,10 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var unirest = require('unirest');
+var app = express();
 var server = http.Server(app);
 var io = require('socket.io')(server);
 var warroom = require("./warroom-client")
-var app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -20,27 +20,11 @@ app.get('/api', function(req, res){
 });
 
 io.on('connection', function(socket){
-  console.log('this is warroom', warroom);
+  // console.log('this is warroom', warroom);
   warroom(function (error, data) {
-      console.log(data) // OR insert this data...
+    console.log(data);
+    socket.emit('resTime', data);
   })
-  .end(function (data) {
-    var total = 0;
-    var lastTen = [];
-    var average = function(resTime){
-      if (lastTen.length < 5){
-        lastTen.push(resTime);
-        for (var i = 0; i < lastTen.length; i++) {
-          total += i;
-          average = total/5;
-        }
-      }
-      return average;
-    };
-    io.emit('resTime', resTime);
-    console.log('resTime: ', resTime);
-    console.log('average: ', average());
-  });
 });
 
 // catch 404 and forward to error handler
@@ -74,5 +58,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
+server.listen(process.env.PORT || 3000, function(){
+  console.log('listening on port 3000');
+})
 
-module.exports = app;
+
+// module.exports = app;

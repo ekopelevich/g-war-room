@@ -1,6 +1,6 @@
 <div class="servers">
   <div class="server-container" ng-repeat="server in servers">
-    <a ui-sref="details({server_id: id})">
+    <a href="/:id">
       <h3>{{ server.name }}</h3>
     </a>
     <p>Average Response Time: {{ server.responseTime * 1000 | date : 'sss' }}ms</p>
